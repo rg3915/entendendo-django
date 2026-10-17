@@ -21,7 +21,7 @@ mas você não precisa deles para rodar nem para estudar o código.
 ## Tecnologias
 
 - Python 3.14 e Django 6.1
-- SQLite (nenhum banco para instalar)
+- SQLite (nenhum banco para instalar), para você rodar em segundos
 - [Pico CSS](https://picocss.com/) sem classes no HTML e [htmx](https://htmx.org/) por CDN
 - [uv](https://docs.astral.sh/uv/) para dependências e ambiente virtual
 
@@ -90,6 +90,14 @@ uv run python manage.py test
 ├── pyproject.toml   # dependências
 └── uv.lock          # versões exatas
 ```
+
+## E o banco de dados?
+
+Os exemplos usam **SQLite** só para você clonar e rodar sem instalar nada. Para um projeto de verdade, eu sugiro usar
+**PostgreSQL** desde o começo: o SQLite aceita coisas que o Postgres recusa e pode esconder bugs que só aparecem em produção.
+Falo sobre isso neste vídeo: [O SQLite está escondendo um bug de você](https://youtube.com/shorts/ikCqYsBHr6k).
+
+Para trocar, instale o driver (`uv add "psycopg[binary]"`) e mude o `DATABASES` no `config/settings.py`.
 
 ## Avisos
 

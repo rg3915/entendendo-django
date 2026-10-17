@@ -50,6 +50,8 @@ Abra http://127.0.0.1:8000. Usuários de exemplo, todos com a senha **`noite-do-
 
 Testes: `uv run python manage.py test` (7 testes).
 
+O banco é SQLite para rodar sem instalar nada; num projeto de verdade, prefira PostgreSQL ([por quê](https://youtube.com/shorts/ikCqYsBHr6k)).
+
 Projeto de estudo: a `SECRET_KEY`, o `DEBUG=True` e as senhas do seed são de demonstração.
 
 Faz parte da série [Entendendo o Django](../README.md) do canal [Regis do Python](https://www.youtube.com/@RegisdoPython).
