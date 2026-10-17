@@ -4,7 +4,7 @@ A **Noite do Código** é um sistema de **chamada de palestras (call for papers)
 O palestrante entra, envia propostas para os próximos eventos, anexa slides e acompanha o que mandou. O organizador revisa e aprova
 as palestras do evento dele. Os visitantes se inscrevem para receber novidades, e há uma API REST para integrar com outros sistemas.
 
-O mesmo sistema aparece em seis versões. Cada uma destaca uma parte do Django e funciona sozinha, como um projeto completo:
+O mesmo sistema aparece em seis versões (e há um sétimo projeto, de vendas, sobre separar empresas). Cada uma destaca uma parte do Django e funciona sozinha, como um projeto completo:
 
 | Pasta | O que essa versão mostra |
 |---|---|
@@ -14,6 +14,7 @@ O mesmo sistema aparece em seis versões. Cada uma destaca uma parte do Django e
 | [`django-ninja/`](django-ninja/) | API REST com Django Ninja: schemas, routers, chave de API, sessão, paginação, filtros, PATCH, async, throttling e Swagger |
 | [`django-rest-framework/`](django-rest-framework/) | A mesma API com Django REST framework: serializers, ViewSets, router, permissões, django-filter e drf-spectacular |
 | [`drf-vs-ninja/`](drf-vs-ninja/) | As duas APIs no mesmo projeto, lado a lado, com testes das duas e um benchmark |
+| [`custom-manager-empresa/`](custom-manager-empresa/) | Outro sistema (vendas de 3 empresas no mesmo banco): separar os dados de cada empresa com Custom Manager, sem multi-tenant, e todas as pegadinhas |
 
 Os vídeos de cada versão estão no canal [Regis do Python](https://www.youtube.com/@RegisdoPython) (série "Entendendo o Django"),
 mas você não precisa deles para rodar nem para estudar o código.

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-br" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Vendas{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.classless.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul><li><strong>{{ user.company.name|default:"Vendas" }}</strong></li></ul>
+      <ul>
+        <li><a href="{% url 'product_list' %}">Produtos</a></li>
+        <li><a href="{% url 'sale_item_create' %}">Novo item</a></li>
+        <li><a href="{% url 'dashboard' %}">Painel</a></li>
+        {% if user.is_authenticated %}<li>{{ user.username }}</li>{% endif %}
+      </ul>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

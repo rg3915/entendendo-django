@@ -1,0 +1,10 @@
+{% extends "core/base.html" %}
+{% block content %}
+<h1>Produtos</h1>
+<table>
+  <thead><tr><th>Produto</th><th>Preço</th></tr></thead>
+  <tbody>
+  {% for product in products %}<tr><td>{{ product.title }}</td><td>R$ {{ product.price }}</td></tr>{% empty %}<tr><td colspan="2">Nenhum produto.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}
