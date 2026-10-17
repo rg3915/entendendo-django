@@ -1,0 +1,9 @@
+{
+  "title": "Duas APIs, um projeto",
+  "abstract": "From serializers to tests: a calm, practical tour of Django REST framework for people who already know Django forms.",
+  "event_id": 1,
+  "tag_ids": [
+    1,
+    2
+  ]
+}

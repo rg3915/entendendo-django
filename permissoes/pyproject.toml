@@ -1,0 +1,9 @@
+[project]
+name = "django-permissions"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "django>=6.1.2",
+    "pillow>=12.3.0",
+    "rules>=3.5",
+]

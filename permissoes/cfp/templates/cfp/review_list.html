@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Review queue</h1>
+<p>Logged in as <strong>{{ user.username }}</strong></p>
+<table>
+  <thead><tr><th>Title</th><th>Event</th><th>Speaker</th><th>Status</th></tr></thead>
+  <tbody>
+  {% for talk in talks %}
+    <tr>
+      <td><a href="{% url 'cfp:talk_detail' talk.pk %}">{{ talk.title }}</a></td>
+      <td>{{ talk.event }}</td>
+      <td>{{ talk.submitted_by.username }}</td>
+      <td>{{ talk.get_status_display }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

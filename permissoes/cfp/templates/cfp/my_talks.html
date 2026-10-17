@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>My talks</h1>
+<p>Logged in as <strong>{{ user.username }}</strong></p>
+<table>
+  <thead><tr><th>Title</th><th>Event</th><th>Level</th><th>Status</th></tr></thead>
+  <tbody>
+  {% for talk in talks %}
+    <tr>
+      <td><a href="{% url 'cfp:talk_detail' talk.pk %}">{{ talk.title }}</a></td>
+      <td>{{ talk.event }}</td>
+      <td>{{ talk.get_level_display }}</td>
+      <td>{{ talk.get_status_display }}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="4">No talks yet.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p><a href="{% url 'cfp:talk_new' %}" role="button">Submit a talk</a></p>
+{% endblock %}

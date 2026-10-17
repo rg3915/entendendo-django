@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noite do Código · Tailwind</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100">
+  <main class="mx-auto max-w-xl p-10">
+    <h1 class="mb-6 text-3xl font-bold">Notify me <span class="text-sm text-slate-400">{% block label %}{% endblock %}</span></h1>
+    <div class="rounded-xl bg-white p-6 text-slate-800 shadow">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+</body>
+</html>

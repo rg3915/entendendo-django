@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<article>
+  <header><strong>Delete “{{ talk.title }}”?</strong></header>
+  <p>{{ talk.event }} · {{ talk.get_level_display }}. This can't be undone.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete it</button>
+    <a href="{{ talk.get_absolute_url }}">Cancel</a>
+  </form>
+</article>
+{% endblock %}

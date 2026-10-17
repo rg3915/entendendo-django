@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Bring your friends</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ formset.management_form }}
+  {{ formset.non_form_errors }}
+  {% for form in formset %}
+    <fieldset>
+      <legend>Guest {{ forloop.counter }}</legend>
+      {{ form }}
+    </fieldset>
+  {% endfor %}
+  <button type="submit">Save guests</button>
+</form>
+{% endblock %}

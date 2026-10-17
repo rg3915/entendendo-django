@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load rules %}
+{% block content %}
+<hgroup>
+  <h1>{{ talk.title }}</h1>
+  <p>{{ talk.event }} · {{ talk.get_level_display }} · {{ talk.get_duration_display }} · {{ talk.get_status_display }}</p>
+</hgroup>
+{% has_perm "cfp.change_talk" user talk as can_edit %}
+{% has_perm "cfp.approve_talk" user talk as can_approve %}
+<p>
+  {% if can_edit %}<a href="{% url 'cfp:talk_edit' talk.pk %}" role="button">Edit</a>{% endif %}
+  {% if can_approve %}<a href="{% url 'cfp:talk_approve' talk.pk %}" role="button">Approve</a>{% endif %}
+</p>
+<p>{{ talk.abstract }}</p>
+<p>Tags: {{ talk.tags.all|join:", "|default:"none" }}</p>
+<h2>Slides</h2>
+{% if talk.slides %}<p><a href="{{ talk.slides.url }}">{{ talk.slides.name }}</a></p>{% else %}<p>No slides yet.</p>{% endif %}
+<h2>Attachments ({{ talk.attachments.count }})</h2>
+<ul>
+  {% for a in talk.attachments.all %}<li><a href="{{ a.file.url }}">{{ a.file.name }}</a></li>{% empty %}<li>None</li>{% endfor %}
+</ul>
+<h2>Speakers</h2>
+<ul>
+  <li>{{ talk.submitted_by.username }}</li>
+  {% for s in talk.speakers.all %}
+    <li>{% if s.photo %}<img src="{{ s.photo.url }}" alt="{{ s.name }}" width="48" height="48"> {% endif %}{{ s.name }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

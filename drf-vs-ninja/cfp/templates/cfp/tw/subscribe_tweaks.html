@@ -1,0 +1,18 @@
+{% extends "cfp/tw/base_tw.html" %}
+{% load widget_tweaks %}
+{% block label %}django-widget-tweaks{% endblock %}
+{% block content %}
+<form method="post" class="space-y-4">
+  {% csrf_token %}
+  <label class="block font-semibold">{{ form.name.label }}
+    {{ form.name|add_class:"w-full rounded border px-3 py-2"|add_error_class:"border-red-500" }}
+  </label>
+  <label class="block font-semibold">{{ form.email.label }}
+    {% render_field form.email placeholder="you@example.com" class="w-full rounded border px-3 py-2" %}
+  </label>
+  <label class="block font-semibold">{{ form.city.label }}
+    {{ form.city|attr:"autocomplete:address-level2"|add_class:"w-full rounded border px-3 py-2" }}
+  </label>
+  <button type="submit" class="rounded bg-indigo-600 px-4 py-2 text-white">Notify me</button>
+</form>
+{% endblock %}

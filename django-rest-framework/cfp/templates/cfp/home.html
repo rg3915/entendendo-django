@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<hgroup>
+  <h1>Call for talks</h1>
+  <p>Share what you know at the next Noite do Código.</p>
+</hgroup>
+{% for event in events %}
+  <article>
+    <header><strong>{{ event.name }}</strong></header>
+    {{ event.date|date:"d/m/Y" }} · {{ event.city }}
+  </article>
+{% endfor %}
+<p><a href="{% url 'cfp:talk_new' %}" role="button">Submit a talk</a></p>
+{% endblock %}

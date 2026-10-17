@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<hgroup>
+  <h1>Approve talk</h1>
+  <p>{{ talk.title }} · {{ talk.event }}</p>
+</hgroup>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

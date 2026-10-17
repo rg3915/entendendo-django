@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Organizer</h1>
+<ul>
+  {% for event in user.organized_events.all %}
+    <li>{{ event }} · {{ event.talks.count }} talk(s)</li>
+  {% endfor %}
+</ul>
+{% endblock %}

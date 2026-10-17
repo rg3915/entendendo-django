@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% if talk %}Edit talk{% else %}Submit a talk{% endif %}</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  {{ form.event.as_field_group }}
+  {% partialdef title-feedback inline %}
+  <div>
+    {{ form.title.label_tag }}
+    {{ form.title }}
+    <small>{{ form.title.errors.0 }}</small>
+  </div>
+  {% endpartialdef %}
+  {{ form.abstract.as_field_group }}
+  {{ form.level.as_field_group }}
+  {{ form.duration.as_field_group }}
+  {{ form.tags.as_field_group }}
+  {{ form.slides.as_field_group }}
+  {% if attachments_form %}
+    {{ attachments_form.files.as_field_group }}
+  {% endif %}
+  {% if formset %}
+    <h2>Co-speakers</h2>
+    {{ formset.management_form }}
+    {{ formset.non_form_errors }}
+    {% for speaker in formset %}
+      <fieldset>
+        <legend>Co-speaker {{ forloop.counter }}</legend>
+        {{ speaker }}
+      </fieldset>
+    {% endfor %}
+  {% endif %}
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "cfp/tw/base_tw.html" %}
+{% load tailwind_filters %}
+{% block label %}crispy-tailwind · |crispy{% endblock %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="rounded bg-indigo-600 px-4 py-2 text-white">Notify me</button>
+</form>
+{% endblock %}

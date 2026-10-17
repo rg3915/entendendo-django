@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}403 · Noite do Código{% endblock %}
+{% block content %}
+<hgroup>
+  <h1>403 · Forbidden</h1>
+  <p>You are logged in, but you don't have permission to do this.</p>
+</hgroup>
+<p><a href="{% url 'cfp:my_talks' %}">Back to my talks</a></p>
+{% endblock %}

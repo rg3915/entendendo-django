@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Noite do Código{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.classless.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.11/dist/htmx.min.js"></script>
+</head>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  <header>
+    <nav>
+      <ul><li><strong><a href="{% url 'cfp:home' %}">Noite do Código</a></strong></li></ul>
+      <ul>
+        <li><a href="{% url 'cfp:subscribe' %}">Notify me</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'cfp:my_talks' %}">My talks</a></li>
+          {% if perms.cfp.view_talk %}
+            <li><a href="{% url 'cfp:review_list' %}">Review</a></li>
+          {% endif %}
+          <li><small>{{ user.username }}</small></li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Log in</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% for message in messages %}
+      <article role="status">{{ message }}</article>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
